@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Button,
@@ -46,7 +46,7 @@ const timeIntervalsFormSchema = z.object({
     .transform((intervals) => {
       return intervals.map((interval) => {
         return {
-          ...interval,
+          weekDay: interval.weekDay,
           startTimeInMinutes: convertTimeStringToMinutes(interval.startTime),
           endTimeInMinutes: convertTimeStringToMinutes(interval.endTime),
         }
@@ -76,7 +76,8 @@ export default function TimeIntervals() {
     control,
     watch,
     formState: { isSubmitting, errors },
-  } = useForm({
+  } = useForm<TimeIntervalsFormInput>({
+    // @ts-expect-error
     resolver: zodResolver(timeIntervalsFormSchema),
     defaultValues: {
       intervals: [
@@ -104,13 +105,13 @@ export default function TimeIntervals() {
 
   async function handleSetTimeIntervals(data: any) {
     const { intervals } = data as TimeIntervalsFormOutput
-    const intervalsToSubmit = intervals.map((interval) => ({
-      weekDay: interval.weekDay,
-      startTimeInMinutes: interval.startTimeInMinutes,
-      endTimeInMinutes: interval.endTimeInMinutes,
-    }))
+    // const intervalsToSubmit = intervals.map((interval) => ({
+    //   weekDay: interval.weekDay,
+    //   startTimeInMinutes: interval.startTimeInMinutes,
+    //   endTimeInMinutes: interval.endTimeInMinutes,
+    // }))
     await api.post('/users/time-intervals', {
-      intervals: intervalsToSubmit,
+      intervals,
     })
 
     await router.push('/register/update-profile')
