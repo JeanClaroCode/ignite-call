@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Button,
@@ -44,7 +46,7 @@ const timeIntervalsFormSchema = z.object({
     .transform((intervals) => {
       return intervals.map((interval) => {
         return {
-          weekDay: interval.weekDay,
+          ...interval,
           startTimeInMinutes: convertTimeStringToMinutes(interval.startTime),
           endTimeInMinutes: convertTimeStringToMinutes(interval.endTime),
         }
@@ -74,8 +76,8 @@ export default function TimeIntervals() {
     control,
     watch,
     formState: { isSubmitting, errors },
-  } = useForm<TimeIntervalsFormInput>({
-    resolver: zodResolver(timeIntervalsFormSchema), // Usando o schema ORIGINAL aqui!
+  } = useForm({
+    resolver: zodResolver(timeIntervalsFormSchema),
     defaultValues: {
       intervals: [
         { weekDay: 0, enabled: false, startTime: '08:00', endTime: '18:00' },
@@ -102,9 +104,13 @@ export default function TimeIntervals() {
 
   async function handleSetTimeIntervals(data: any) {
     const { intervals } = data as TimeIntervalsFormOutput
-
+    const intervalsToSubmit = intervals.map((interval) => ({
+      weekDay: interval.weekDay,
+      startTimeInMinutes: interval.startTimeInMinutes,
+      endTimeInMinutes: interval.endTimeInMinutes,
+    }))
     await api.post('/users/time-intervals', {
-      intervals,
+      intervals: intervalsToSubmit,
     })
 
     await router.push('/register/update-profile')
@@ -136,8 +142,9 @@ export default function TimeIntervals() {
                       render={({ field }) => {
                         return (
                           <Checkbox
-                            onCheckedChange={(checked: any) => {
-                              field.onChange(checked === true)
+                            // @ts-expect-error
+                            onCheckedChange={(checked: boolean) => {
+                              field.onChange(checked)
                             }}
                             checked={field.value}
                           />
