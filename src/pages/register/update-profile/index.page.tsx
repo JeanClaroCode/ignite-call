@@ -37,7 +37,7 @@ export default function UpdateProfile() {
   })
 
   const session = useSession()
-
+  console.log('Session ' + session)
   const avatarProps = {
     src: session.data?.user.avatar_url,
     alt: session.data?.user.name,
@@ -91,14 +91,23 @@ export default function UpdateProfile() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const session = await getServerSession(
-    req,
-    res,
-    buildNextAuthOption(req, res),
-  )
-  return {
-    props: {
-      session,
-    },
+  try {
+    const session = await getServerSession(
+      req,
+      res,
+      buildNextAuthOption(req, res),
+    )
+    return {
+      props: {
+        session,
+      },
+    }
+  } catch (error) {
+    console.error('Error in getServerSideProps:', error)
+    return {
+      props: {
+        session: null, // Or some default value
+      },
+    }
   }
 }
