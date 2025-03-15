@@ -8,7 +8,7 @@ import {
   TextArea,
 } from '@ignite-ui/react'
 import { Container, Header } from '../styles'
-import { ArrowRight } from '@phosphor-icons/react'
+// import { ArrowRight } from '@phosphor-icons/react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -82,7 +82,8 @@ export default function UpdateProfile() {
           </label>
 
           <Button type="submit" disabled={isSubmitting}>
-            Finalizar <ArrowRight />
+            Finalizar
+            {/* <ArrowRight /> */}
           </Button>
         </ProfileBox>
       </Container>
