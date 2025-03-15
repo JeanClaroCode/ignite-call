@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { CaretLeft, CaretRight } from '@phosphor-icons/react'
 import {
   CalendarActions,
@@ -38,7 +39,6 @@ export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
   const [currentDate, setCurrentDate] = useState(() => {
     return dayjs().set('date', 1)
   })
-
   const router = useRouter()
 
   function handlePreviousMonth() {
