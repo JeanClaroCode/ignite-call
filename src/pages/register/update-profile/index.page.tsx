@@ -20,7 +20,7 @@ import { buildNextAuthOption } from '@/pages/api/auth/[...nextauth].api'
 import { api } from '@/lib/axios'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
-import { ArrowRight } from '@phosphor-icons/react/dist/icons/ArrowRight'
+import { ArrowRight } from '@phosphor-icons/react'
 
 const registerFormSchema = z.object({
   bio: z.string(),

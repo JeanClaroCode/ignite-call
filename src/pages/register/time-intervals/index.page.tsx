@@ -18,7 +18,7 @@ import {
   IntervalItem,
   IntervalsContainer,
 } from './styles'
-import { ArrowRight } from '@phosphor-icons/react/dist/icons/ArrowRight'
+
 import { z } from 'zod'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { getWeekDays } from '@/utils/get-week-days'
@@ -27,6 +27,7 @@ import { convertTimeStringToMinutes } from '@/utils/convert-time-string-to-minut
 import { api } from '@/lib/axios'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
+import { ArrowRight } from '@phosphor-icons/react'
 
 const timeIntervalsFormSchema = z.object({
   intervals: z
