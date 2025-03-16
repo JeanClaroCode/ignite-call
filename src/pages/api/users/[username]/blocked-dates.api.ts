@@ -60,6 +60,7 @@ export default async function handle(
  `
 
   const referenceDate = dayjs(new Date())
+  console.log('DATA DE REFERENCIA: ' + referenceDate)
   const today = referenceDate.date()
 
   const blockedDates = blockedDatesRaw
