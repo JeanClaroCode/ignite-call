@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { CalendarBlank, Clock } from '@phosphor-icons/react'
+
 import { ConfirmForm, FormActions, FormHeader, FormError } from './styles'
 import { Button, Text, TextArea, TextInput } from '@ignite-ui/react'
 import { z } from 'zod'
@@ -8,6 +8,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import dayjs from 'dayjs'
 import { api } from '@/lib/axios'
 import { useRouter } from 'next/router'
+import { CalendarBlank } from '@phosphor-icons/react/dist/icons/CalendarBlank'
+import { Clock } from '@phosphor-icons/react/dist/icons/Clock'
 
 const confirmFormSchema = z.object({
   name: z.string().min(3, { message: 'O nome precisa no mínimo 3 caracteres' }),

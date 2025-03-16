@@ -8,7 +8,7 @@ import {
   TextArea,
 } from '@ignite-ui/react'
 import { Container, Header } from '../styles'
-// import { ArrowRight } from '@phosphor-icons/react'
+
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -20,6 +20,7 @@ import { buildNextAuthOption } from '@/pages/api/auth/[...nextauth].api'
 import { api } from '@/lib/axios'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
+import { ArrowRight } from '@phosphor-icons/react/dist/icons/ArrowRight'
 
 const registerFormSchema = z.object({
   bio: z.string(),
@@ -83,7 +84,7 @@ export default function UpdateProfile() {
 
           <Button type="submit" disabled={isSubmitting}>
             Finalizar
-            {/* <ArrowRight /> */}
+            <ArrowRight />
           </Button>
         </ProfileBox>
       </Container>

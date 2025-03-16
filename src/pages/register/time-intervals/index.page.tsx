@@ -18,7 +18,7 @@ import {
   IntervalItem,
   IntervalsContainer,
 } from './styles'
-import { ArrowRight } from '@phosphor-icons/react'
+import { ArrowRight } from '@phosphor-icons/react/dist/icons/ArrowRight'
 import { z } from 'zod'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { getWeekDays } from '@/utils/get-week-days'
