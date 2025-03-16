@@ -1,8 +1,11 @@
 /* eslint-disable camelcase */
 import { prisma } from '@/lib/prisma'
 import dayjs from 'dayjs'
-// import { Prisma } from '@prisma/client'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
 import { NextApiRequest, NextApiResponse } from 'next'
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 export default async function handle(
   req: NextApiRequest,
@@ -59,7 +62,7 @@ export default async function handle(
         COUNT(s.date) >= ((uti.time_end_in_minutes - uti.time_start_in_minutes) / 60)
  `
 
-  const referenceDate = dayjs(new Date())
+  const referenceDate = dayjs().tz('America/Sao_Paulo')
   console.log('DATA DE REFERENCIA: ' + referenceDate)
   const today = referenceDate.date()
 
