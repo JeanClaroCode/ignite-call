@@ -70,18 +70,14 @@ export function CalendarStep({ onSelectDateTime }: CalendarStepProps) {
 
           <TimePickerList>
             {availability?.possibleTimes.map((hour) => {
-              console.log('hora anterior:' + hour)
-              const localHour = dayjs
-                .utc()
-                .set('hour', hour)
-                .tz(dayjs.tz.guess()) // Converte para o fuso do usuário
-                .hour()
-              console.log('local:' + localHour)
+              console.log('local:' + hour)
+              const adjustedHour = hour - 3
+              console.log('adjustedHour' + adjustedHour)
               return (
                 <TimePickerItem
                   key={hour}
                   onClick={() => handleSelectTime(hour)}
-                  disabled={!availability.availableTimes.includes(localHour)}
+                  disabled={!availability.availableTimes.includes(adjustedHour)}
                 >
                   {String(hour).padStart(2, '0')}:00h
                 </TimePickerItem>
