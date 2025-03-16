@@ -27,7 +27,7 @@ import { convertTimeStringToMinutes } from '@/utils/convert-time-string-to-minut
 import { api } from '@/lib/axios'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
-import { ArrowRight } from '@phosphor-icons/react'
+import { ArrowRight } from '@phosphor-icons/react/dist/ssr/ArrowRight'
 
 const timeIntervalsFormSchema = z.object({
   intervals: z

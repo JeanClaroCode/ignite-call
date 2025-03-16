@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { CalendarBlank, Clock } from '@phosphor-icons/react'
+import { CalendarBlank } from '@phosphor-icons/react/dist/ssr/CalendarBlank'
+import { Clock } from '@phosphor-icons/react/dist/ssr/Clock'
 import { ConfirmForm, FormActions, FormHeader, FormError } from './styles'
 import { Button, Text, TextArea, TextInput } from '@ignite-ui/react'
 import { z } from 'zod'

@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, TextInput, Text } from '@ignite-ui/react'
 import { Form, FormAnnotation } from './styles'
-import { ArrowRight } from '@phosphor-icons/react'
+
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/router'
+import { ArrowRight } from '@phosphor-icons/react/dist/ssr/ArrowRight'
 
 const claimUsernameFormSchema = z.object({
   username: z

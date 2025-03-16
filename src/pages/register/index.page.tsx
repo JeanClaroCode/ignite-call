@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Heading, MultiStep, Text, TextInput } from '@ignite-ui/react'
 import { Container, Form, FormError, Header } from './styles'
-import { ArrowRight } from '@phosphor-icons/react'
+
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -10,6 +10,7 @@ import { useEffect } from 'react'
 import { api } from '@/lib/axios'
 import { AxiosError } from 'axios'
 import { NextSeo } from 'next-seo'
+import { ArrowRight } from '@phosphor-icons/react/dist/ssr/ArrowRight'
 
 const registerFormSchema = z.object({
   username: z
