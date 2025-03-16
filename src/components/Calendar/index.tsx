@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import CaretLeft from '@phosphor-icons/react/CaretLeft'
-import CaretRight from '@phosphor-icons/react/CaretRight'
 
 import {
   CalendarActions,
@@ -16,6 +14,8 @@ import dayjs from 'dayjs'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '@/lib/axios'
 import { useRouter } from 'next/router'
+import { CaretLeft } from '@phosphor-icons/react/dist/ssr/CaretLeft'
+import { CaretRight } from '@phosphor-icons/react/dist/ssr/CaretRight'
 
 interface CalendarWeek {
   week: number

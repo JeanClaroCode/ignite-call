@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   pageExtensions: ['page.tsx', 'api.ts', 'api.tsx'],
   modularizeImports: {
     '@phosphor-icons/react': {
-      transform: '@phosphor-icons/react/{{member}}',
+      transform: '@phosphor-icons/react/dist/ssr/{{member}}',
     },
   },
 }
