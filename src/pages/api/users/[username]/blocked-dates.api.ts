@@ -81,18 +81,32 @@ export default async function handle(
     },
   })
 
-  if (userAvailability) {
-    const { time_end_in_minutes } = userAvailability[0]
+  if (userAvailability && userAvailability.length > 0) {
+    const time_end_in_minutes = userAvailability[0]?.time_end_in_minutes
 
-    const startOfDay = referenceDate.startOf('day')
+    if (time_end_in_minutes !== undefined) {
+      const startOfDay = referenceDate.startOf('day')
+      const endTime = startOfDay.add(time_end_in_minutes, 'minutes')
+      const isPassedAllDay = endTime.isBefore(referenceDate)
 
-    const endTime = startOfDay.add(time_end_in_minutes, 'minutes')
-
-    const isPassedAllDay = endTime.isBefore(referenceDate)
-
-    if (isPassedAllDay) {
-      blockedDates.push(todayTimestamp)
+      if (isPassedAllDay) {
+        blockedDates.push(todayTimestamp)
+      }
+    } else {
+      console.warn(
+        'time_end_in_minutes is undefined for user:',
+        user.id,
+        'weekDay:',
+        referenceDate.get('day'),
+      )
     }
+  } else {
+    console.warn(
+      'userAvailability is empty for user:',
+      user.id,
+      'weekDay:',
+      referenceDate.get('day'),
+    )
   }
 
   return res.json({ blockedWeekDays, blockedDates })
