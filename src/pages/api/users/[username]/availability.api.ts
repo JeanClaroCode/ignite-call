@@ -71,9 +71,11 @@ export default async function handle(
   // [8,9,10]
 
   const availableTimes = possibleTimes.filter((time) => {
-    const isTimeBlocked = blockedTimes.some(
-      (blockedTime) => blockedTime.date.getHours() === time,
-    )
+    const isTimeBlocked = blockedTimes.some((blockedTime) => {
+      // blockedTime.date.getHours().utcOffset(-180) === time,
+      const localHour = dayjs(blockedTime.date).utcOffset(-180).hour() // Ajusta para horário local
+      return localHour === time
+    })
     const isTimeinPast = referenceDate.set('hour', time).isBefore(new Date())
 
     return !isTimeBlocked && !isTimeinPast
