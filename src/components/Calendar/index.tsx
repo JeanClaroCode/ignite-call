@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { CaretLeft, CaretRight } from '@phosphor-icons/react'
+import CaretLeft from '@phosphor-icons/react/CaretLeft'
+import CaretRight from '@phosphor-icons/react/CaretRight'
+
 import {
   CalendarActions,
   CalendarBody,
